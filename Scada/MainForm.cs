@@ -18,11 +18,10 @@ namespace Scada
 
         public MainForm(DataConcentratorManager dataConcentratorManager)
         {
-            this.dataConcentratorManager = dataConcentratorManager;
-
             InitializeComponent();
-            dataConcentratorManager.valueChanged += new ValueChangedHandler(RefreshTag);
+            this.dataConcentratorManager = dataConcentratorManager;
             InitTags();
+            dataConcentratorManager.valueChanged += new ValueChangedHandler(RefreshTag);
         }
 
         bool AddTag(Tag tag)

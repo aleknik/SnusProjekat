@@ -18,9 +18,9 @@ namespace DataConcentrator
         {
         }
 
-        public Alarm(string id, double activationPoint, ActivationType type, string message)
+        public Alarm(double activationPoint, ActivationType type, string message)
         {
-            this.id = id;
+            this.id = Guid.NewGuid().ToString();
             this.activationPoint = activationPoint;
             this.type = type;
             this.message = message;

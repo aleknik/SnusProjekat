@@ -19,8 +19,6 @@ namespace Scada
             InitializeComponent();
             this.dataConcentratorManager = dataConcentratorManager;
             this.tag = (AITag) dataConcentratorManager.GetTagById(id);
-            Alarm alarm = new Alarm("asda", 10, ActivationType.Fe, "proba");
-            dataConcentratorManager.AddAlarm(tag.Id, alarm);
 
             InitListView();
         }
@@ -28,6 +26,15 @@ namespace Scada
         private void InitListView()
         {
             foreach (Alarm alarm in tag.Alarms)
+            {
+                if (alarm != null)
+                    AddAlarmToListView(alarm);
+            }
+        }
+
+        private void AddAlarm(Alarm alarm)
+        {
+            if (dataConcentratorManager.AddAlarm(tag.Id, alarm))
             {
                 AddAlarmToListView(alarm);
             }
@@ -40,6 +47,17 @@ namespace Scada
             item.SubItems.Add(alarm.Type.ToString());
             item.SubItems.Add(alarm.Message);
             listViewAlarms.Items.Add(item);
+        }
+
+        private void buttonAddAlarm_Click(object sender, EventArgs e)
+        {
+            FormAddAlarm form = new FormAddAlarm();
+            form.ShowDialog();
+
+            if (form.DialogResult == DialogResult.OK)
+            {
+                AddAlarm(form.Alarm);
+            }
         }
     }
 }

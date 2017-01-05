@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.listViewAlarms = new System.Windows.Forms.ListView();
-            this.buttonAddAlarm = new System.Windows.Forms.Button();
-            this.buttonRemoveAlarm = new System.Windows.Forms.Button();
             this.activationPoint = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.alarmType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.message = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.buttonAddAlarm = new System.Windows.Forms.Button();
+            this.buttonRemoveAlarm = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listViewAlarms
@@ -49,24 +49,6 @@
             this.listViewAlarms.UseCompatibleStateImageBehavior = false;
             this.listViewAlarms.View = System.Windows.Forms.View.Details;
             // 
-            // buttonAddAlarm
-            // 
-            this.buttonAddAlarm.Location = new System.Drawing.Point(12, 44);
-            this.buttonAddAlarm.Name = "buttonAddAlarm";
-            this.buttonAddAlarm.Size = new System.Drawing.Size(100, 23);
-            this.buttonAddAlarm.TabIndex = 1;
-            this.buttonAddAlarm.Text = "Add alarm";
-            this.buttonAddAlarm.UseVisualStyleBackColor = true;
-            // 
-            // buttonRemoveAlarm
-            // 
-            this.buttonRemoveAlarm.Location = new System.Drawing.Point(663, 44);
-            this.buttonRemoveAlarm.Name = "buttonRemoveAlarm";
-            this.buttonRemoveAlarm.Size = new System.Drawing.Size(100, 23);
-            this.buttonRemoveAlarm.TabIndex = 2;
-            this.buttonRemoveAlarm.Text = "Remove alarm";
-            this.buttonRemoveAlarm.UseVisualStyleBackColor = true;
-            // 
             // activationPoint
             // 
             this.activationPoint.Text = "Activation value";
@@ -81,6 +63,25 @@
             // 
             this.message.Text = "Message";
             this.message.Width = 258;
+            // 
+            // buttonAddAlarm
+            // 
+            this.buttonAddAlarm.Location = new System.Drawing.Point(12, 44);
+            this.buttonAddAlarm.Name = "buttonAddAlarm";
+            this.buttonAddAlarm.Size = new System.Drawing.Size(100, 23);
+            this.buttonAddAlarm.TabIndex = 1;
+            this.buttonAddAlarm.Text = "Add alarm";
+            this.buttonAddAlarm.UseVisualStyleBackColor = true;
+            this.buttonAddAlarm.Click += new System.EventHandler(this.buttonAddAlarm_Click);
+            // 
+            // buttonRemoveAlarm
+            // 
+            this.buttonRemoveAlarm.Location = new System.Drawing.Point(663, 44);
+            this.buttonRemoveAlarm.Name = "buttonRemoveAlarm";
+            this.buttonRemoveAlarm.Size = new System.Drawing.Size(100, 23);
+            this.buttonRemoveAlarm.TabIndex = 2;
+            this.buttonRemoveAlarm.Text = "Remove alarm";
+            this.buttonRemoveAlarm.UseVisualStyleBackColor = true;
             // 
             // AlarmsForm
             // 
