@@ -55,8 +55,11 @@ namespace Scada
         {
             AlarmDto alarm = dataConcentratorManager.GetAlarmFromDatabase(id);
             ListViewItem item = new ListViewItem(alarm.TagId);
+            item.Tag = alarm;
             item.SubItems.Add(alarm.Message);
             item.SubItems.Add(alarm.Time.ToString());
+            item.BackColor = Color.Red;
+            item.EnsureVisible();
             listViewAlarms.Invoke(
                 new MethodInvoker(delegate() {
                     listViewAlarms.Items.Add(item);
@@ -140,6 +143,22 @@ namespace Scada
                     {
                         dataConcentratorManager.WrtiteToTag(id, form.Value);
                     }
+                }
+            }
+        }
+
+        private void listViewAlarms_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (listViewAlarms.SelectedItems.Count == 1)
+            {
+                AlarmDto alarm = (AlarmDto) listViewAlarms.SelectedItems[0].Tag;
+                DialogResult result1 = MessageBox.Show("Acknowledge alarm?",
+                    "Alarm for tag: " + alarm.TagId,
+                    MessageBoxButtons.YesNo);
+
+                if (result1 == DialogResult.Yes)
+                {
+                    listViewAlarms.Items.Remove(listViewAlarms.SelectedItems[0]);
                 }
             }
         }

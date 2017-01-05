@@ -32,6 +32,7 @@
             this.panelTypeSelect = new System.Windows.Forms.Panel();
             this.comboBoxType = new System.Windows.Forms.ComboBox();
             this.panelAnalogInput = new System.Windows.Forms.Panel();
+            this.textBoxAiUnit = new System.Windows.Forms.TextBox();
             this.textBoxAiScanTime = new System.Windows.Forms.TextBox();
             this.comboBoxAiAddress = new System.Windows.Forms.ComboBox();
             this.textBoxAiDesc = new System.Windows.Forms.TextBox();
@@ -42,15 +43,14 @@
             this.textBoxDiDesc = new System.Windows.Forms.TextBox();
             this.textBoxDiID = new System.Windows.Forms.TextBox();
             this.panelTagCreate = new System.Windows.Forms.Panel();
-            this.buttonBack = new System.Windows.Forms.Button();
-            this.buttonFinish = new System.Windows.Forms.Button();
-            this.textBoxAiUnit = new System.Windows.Forms.TextBox();
             this.panelAnalogOutput = new System.Windows.Forms.Panel();
             this.textBoxUnit = new System.Windows.Forms.TextBox();
             this.textBoxAoInitVal = new System.Windows.Forms.TextBox();
             this.comboBoxAoAddress = new System.Windows.Forms.ComboBox();
             this.textBoxAoDesc = new System.Windows.Forms.TextBox();
             this.textBoxAoID = new System.Windows.Forms.TextBox();
+            this.buttonBack = new System.Windows.Forms.Button();
+            this.buttonFinish = new System.Windows.Forms.Button();
             this.panelTypeSelect.SuspendLayout();
             this.panelAnalogInput.SuspendLayout();
             this.panelDigitalInput.SuspendLayout();
@@ -102,6 +102,13 @@
             this.panelAnalogInput.Name = "panelAnalogInput";
             this.panelAnalogInput.Size = new System.Drawing.Size(392, 261);
             this.panelAnalogInput.TabIndex = 2;
+            // 
+            // textBoxAiUnit
+            // 
+            this.textBoxAiUnit.Location = new System.Drawing.Point(135, 211);
+            this.textBoxAiUnit.Name = "textBoxAiUnit";
+            this.textBoxAiUnit.Size = new System.Drawing.Size(100, 20);
+            this.textBoxAiUnit.TabIndex = 9;
             // 
             // textBoxAiScanTime
             // 
@@ -185,34 +192,6 @@
             this.panelTagCreate.Size = new System.Drawing.Size(392, 320);
             this.panelTagCreate.TabIndex = 2;
             // 
-            // buttonBack
-            // 
-            this.buttonBack.Location = new System.Drawing.Point(12, 274);
-            this.buttonBack.Name = "buttonBack";
-            this.buttonBack.Size = new System.Drawing.Size(86, 26);
-            this.buttonBack.TabIndex = 5;
-            this.buttonBack.Text = "Back";
-            this.buttonBack.UseVisualStyleBackColor = true;
-            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
-            // 
-            // buttonFinish
-            // 
-            this.buttonFinish.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonFinish.Location = new System.Drawing.Point(294, 274);
-            this.buttonFinish.Name = "buttonFinish";
-            this.buttonFinish.Size = new System.Drawing.Size(86, 26);
-            this.buttonFinish.TabIndex = 4;
-            this.buttonFinish.Text = "Finish";
-            this.buttonFinish.UseVisualStyleBackColor = true;
-            this.buttonFinish.Click += new System.EventHandler(this.buttonFinish_Click);
-            // 
-            // textBoxAiUnit
-            // 
-            this.textBoxAiUnit.Location = new System.Drawing.Point(135, 211);
-            this.textBoxAiUnit.Name = "textBoxAiUnit";
-            this.textBoxAiUnit.Size = new System.Drawing.Size(100, 20);
-            this.textBoxAiUnit.TabIndex = 9;
-            // 
             // panelAnalogOutput
             // 
             this.panelAnalogOutput.Controls.Add(this.textBoxUnit);
@@ -261,6 +240,27 @@
             this.textBoxAoID.Size = new System.Drawing.Size(100, 20);
             this.textBoxAoID.TabIndex = 10;
             // 
+            // buttonBack
+            // 
+            this.buttonBack.Location = new System.Drawing.Point(12, 274);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(86, 26);
+            this.buttonBack.TabIndex = 5;
+            this.buttonBack.Text = "Back";
+            this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
+            // 
+            // buttonFinish
+            // 
+            this.buttonFinish.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonFinish.Location = new System.Drawing.Point(294, 274);
+            this.buttonFinish.Name = "buttonFinish";
+            this.buttonFinish.Size = new System.Drawing.Size(86, 26);
+            this.buttonFinish.TabIndex = 4;
+            this.buttonFinish.Text = "Finish";
+            this.buttonFinish.UseVisualStyleBackColor = true;
+            this.buttonFinish.Click += new System.EventHandler(this.buttonFinish_Click);
+            // 
             // AddTagForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -269,6 +269,7 @@
             this.Controls.Add(this.panelTagCreate);
             this.Controls.Add(this.panelTypeSelect);
             this.Name = "AddTagForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddTagForm";
             this.panelTypeSelect.ResumeLayout(false);
             this.panelAnalogInput.ResumeLayout(false);

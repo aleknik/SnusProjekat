@@ -70,6 +70,7 @@
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOK);
             this.Name = "WriteToTagForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WriteToTagForm";
             this.ResumeLayout(false);
             this.PerformLayout();

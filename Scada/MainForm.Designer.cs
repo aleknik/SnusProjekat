@@ -94,12 +94,14 @@
             this.tagID,
             this.message,
             this.time});
+            this.listViewAlarms.FullRowSelect = true;
             this.listViewAlarms.Location = new System.Drawing.Point(12, 352);
             this.listViewAlarms.Name = "listViewAlarms";
             this.listViewAlarms.Size = new System.Drawing.Size(737, 185);
             this.listViewAlarms.TabIndex = 6;
             this.listViewAlarms.UseCompatibleStateImageBehavior = false;
             this.listViewAlarms.View = System.Windows.Forms.View.Details;
+            this.listViewAlarms.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listViewAlarms_MouseDoubleClick);
             // 
             // tagID
             // 
@@ -126,6 +128,7 @@
             this.Controls.Add(this.tagListView);
             this.Controls.Add(this.buttonAddTAg);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Scada";
             this.ResumeLayout(false);
 

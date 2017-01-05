@@ -47,5 +47,20 @@ namespace DataConcentrator
             get { return unit; }
             set { unit = value; }
         }
+
+        public void RemoveAlarm(string id)
+        {
+            Alarm alarm = null;
+            foreach (Alarm alarm1 in Alarms)
+            {
+                if (alarm1.Id == id)
+                {
+                    alarm = alarm1;
+                    break;
+                }
+            }
+
+            alarms.Remove(alarm);
+        }
     }
 }

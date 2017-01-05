@@ -43,7 +43,7 @@ namespace Scada
         private void AddAlarmToListView(Alarm alarm)
         {
             ListViewItem item = new ListViewItem(alarm.ActivationPoint.ToString());
-            item.Tag = tag;
+            item.Tag = alarm;
             item.SubItems.Add(alarm.Type.ToString());
             item.SubItems.Add(alarm.Message);
             listViewAlarms.Items.Add(item);
@@ -57,6 +57,18 @@ namespace Scada
             if (form.DialogResult == DialogResult.OK)
             {
                 AddAlarm(form.Alarm);
+            }
+        }
+
+        private void buttonRemoveAlarm_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem selectedItem in listViewAlarms.SelectedItems)
+            {
+                Alarm alarm = (Alarm) selectedItem.Tag;
+                dataConcentratorManager.RemoveAlarm(tag.Id, alarm.Id);
+                listViewAlarms.Items.Remove(selectedItem);
+                
+
             }
         }
     }

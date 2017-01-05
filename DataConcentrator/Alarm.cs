@@ -73,11 +73,11 @@ namespace DataConcentrator
             switch (type)
             {
                 case ActivationType.Fe:
-                    if (newValue < activationPoint && oldValue > activationPoint)
+                    if (newValue < activationPoint && oldValue >= activationPoint)
                         return true;
                     break;
                 case ActivationType.Re:
-                    if (newValue > activationPoint && oldValue < activationPoint)
+                    if (newValue > activationPoint && oldValue <= activationPoint)
                         return true;
                     break;
             }

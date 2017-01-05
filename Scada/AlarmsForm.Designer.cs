@@ -42,6 +42,7 @@
             this.activationPoint,
             this.alarmType,
             this.message});
+            this.listViewAlarms.FullRowSelect = true;
             this.listViewAlarms.Location = new System.Drawing.Point(12, 89);
             this.listViewAlarms.Name = "listViewAlarms";
             this.listViewAlarms.Size = new System.Drawing.Size(745, 206);
@@ -82,6 +83,7 @@
             this.buttonRemoveAlarm.TabIndex = 2;
             this.buttonRemoveAlarm.Text = "Remove alarm";
             this.buttonRemoveAlarm.UseVisualStyleBackColor = true;
+            this.buttonRemoveAlarm.Click += new System.EventHandler(this.buttonRemoveAlarm_Click);
             // 
             // AlarmsForm
             // 
@@ -92,6 +94,7 @@
             this.Controls.Add(this.buttonAddAlarm);
             this.Controls.Add(this.listViewAlarms);
             this.Name = "AlarmsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AlarmsForm";
             this.ResumeLayout(false);
 

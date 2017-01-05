@@ -91,6 +91,7 @@
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOK);
             this.Name = "FormAddAlarm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormAddAlarm";
             this.ResumeLayout(false);
             this.PerformLayout();

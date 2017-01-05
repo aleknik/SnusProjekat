@@ -161,7 +161,11 @@ namespace DataConcentrator
 
         public bool RemoveAlarm(string tagId, string alarmId)
         {
-            throw new NotImplementedException();
+            AITag tag = (AITag) tags[tagId];
+
+            tag.RemoveAlarm(alarmId);
+
+            return true;
         }
 
         public bool WrtiteToTag(string id, double value)
