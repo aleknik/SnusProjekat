@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="AITag.cs" />
     <Compile Include="Alarm.cs" />
+    <Compile Include="AlarmDto.cs" />
     <Compile Include="AOTag.cs" />
     <Compile Include="DataConcentratorManager.cs" />
     <Compile Include="DITag.cs" />

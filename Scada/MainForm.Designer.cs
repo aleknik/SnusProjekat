@@ -34,6 +34,10 @@
             this.TypeColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.valueColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonRemoveTag = new System.Windows.Forms.Button();
+            this.listViewAlarms = new System.Windows.Forms.ListView();
+            this.tagID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.message = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.time = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // buttonAddTAg
@@ -55,7 +59,7 @@
             this.tagListView.FullRowSelect = true;
             this.tagListView.Location = new System.Drawing.Point(12, 146);
             this.tagListView.Name = "tagListView";
-            this.tagListView.Size = new System.Drawing.Size(737, 183);
+            this.tagListView.Size = new System.Drawing.Size(737, 200);
             this.tagListView.TabIndex = 4;
             this.tagListView.UseCompatibleStateImageBehavior = false;
             this.tagListView.View = System.Windows.Forms.View.Details;
@@ -84,11 +88,40 @@
             this.buttonRemoveTag.UseVisualStyleBackColor = true;
             this.buttonRemoveTag.Click += new System.EventHandler(this.buttonRemoveTag_Click);
             // 
+            // listViewAlarms
+            // 
+            this.listViewAlarms.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.tagID,
+            this.message,
+            this.time});
+            this.listViewAlarms.Location = new System.Drawing.Point(12, 352);
+            this.listViewAlarms.Name = "listViewAlarms";
+            this.listViewAlarms.Size = new System.Drawing.Size(737, 185);
+            this.listViewAlarms.TabIndex = 6;
+            this.listViewAlarms.UseCompatibleStateImageBehavior = false;
+            this.listViewAlarms.View = System.Windows.Forms.View.Details;
+            // 
+            // tagID
+            // 
+            this.tagID.Text = "Tag ID";
+            this.tagID.Width = 84;
+            // 
+            // message
+            // 
+            this.message.Text = "message";
+            this.message.Width = 110;
+            // 
+            // time
+            // 
+            this.time.Text = "Time";
+            this.time.Width = 128;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(761, 549);
+            this.Controls.Add(this.listViewAlarms);
             this.Controls.Add(this.buttonRemoveTag);
             this.Controls.Add(this.tagListView);
             this.Controls.Add(this.buttonAddTAg);
@@ -105,6 +138,10 @@
         private System.Windows.Forms.ColumnHeader valueColumn;
         private System.Windows.Forms.Button buttonRemoveTag;
         private System.Windows.Forms.ColumnHeader TypeColumn;
+        private System.Windows.Forms.ListView listViewAlarms;
+        private System.Windows.Forms.ColumnHeader tagID;
+        private System.Windows.Forms.ColumnHeader message;
+        private System.Windows.Forms.ColumnHeader time;
     }
 }
 

@@ -67,5 +67,22 @@ namespace DataConcentrator
         {
             return (id != null ? id.GetHashCode() : 0);
         }
+
+        public bool CheckAlarm(double newValue, double oldValue)
+        {
+            switch (type)
+            {
+                case ActivationType.Fe:
+                    if (newValue < activationPoint && oldValue > activationPoint)
+                        return true;
+                    break;
+                case ActivationType.Re:
+                    if (newValue > activationPoint && oldValue < activationPoint)
+                        return true;
+                    break;
+            }
+
+            return false;
+        }
     }
 }

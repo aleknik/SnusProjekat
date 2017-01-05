@@ -35,6 +35,7 @@ namespace Scada
             set { alarm = value; }
         }
 
+
         private void buttonOK_Click(object sender, EventArgs e)
         {
             double point = Convert.ToDouble(textBoxAlarmPoint.Text);

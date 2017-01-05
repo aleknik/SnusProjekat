@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
@@ -12,6 +14,8 @@ using System.Xml.Serialization;
 namespace DataConcentrator
 {
     public delegate void ValueChangedHandler(string id, double value);
+    public delegate void AlarmRaisedHandler(string id);
+
 
     public class DataConcentratorManager : IDataConcentrator
     {
@@ -25,7 +29,12 @@ namespace DataConcentrator
 
         private Dictionary<string, Tag> tags;
         private Dictionary<string, Thread> tagThreads;
+        private Dictionary<string, AlarmDto> database;
+
+        private readonly double TOLERANCE = 0.005;
+
         public event ValueChangedHandler valueChanged;
+        public event AlarmRaisedHandler alarmRaised;
 
         public DataConcentratorManager()
         {
@@ -34,6 +43,7 @@ namespace DataConcentrator
 
             tags = new Dictionary<string, Tag>();
             tagThreads = new Dictionary<string, Thread>();
+            database = new Dictionary<string, AlarmDto>();
 
             XmlDeserialisation();
 
@@ -86,8 +96,7 @@ namespace DataConcentrator
             }
             catch (Exception)
             {
-                
-                throw;
+                return new List<Tag>();
             }
 
         }
@@ -166,23 +175,48 @@ namespace DataConcentrator
         public void ScanAnalog(object o)
         {
             AITag tag = (AITag) o;
+            double newValue = 0;
+            double oldValue = 0;
             while (true)
             {
-                double value = plcSimulatorManager.Read(tag.Address);
-                OnValueChanged(tag.Id, value);
+                newValue = plcSimulatorManager.Read(tag.Address);
 
+                if (Math.Abs(newValue - oldValue) > TOLERANCE)
+                {
+                    OnValueChanged(tag.Id, newValue);
+                    foreach (Alarm alarm in tag.Alarms)
+                    {
+                        if (alarm.CheckAlarm(newValue, oldValue))
+                        {
+                            AlarmDto alarmDto = new AlarmDto(tag.Id, alarm.Message, DateTime.Now);
+                            database.Add(alarmDto.Id, alarmDto);
+                            OnAlarmRaised(alarmDto.Id);
+                        }
+                    }
+                    oldValue = newValue;
+                }
                 Thread.Sleep(tag.ScanTime);
             }
+        }
+
+        public AlarmDto GetAlarmFromDatabase(string id)
+        {
+            return database[id];
         }
 
         public void ScanDigital(object o)
         {
             DITag tag = (DITag)o;
+            double newValue = 0;
+            double oldValue = 0;
             while (true)
             {
                 double value = plcSimulatorManager.Read(tag.Address);
-                OnValueChanged(tag.Id, value);
-
+                if (Math.Abs(newValue - oldValue) > TOLERANCE)
+                {
+                    OnValueChanged(tag.Id, newValue);
+                    oldValue = newValue;
+                }
                 Thread.Sleep(tag.ScanTime);
             }
         }
@@ -192,6 +226,14 @@ namespace DataConcentrator
             if (valueChanged != null)
             {
                 valueChanged(id, value);
+            }
+        }
+
+        public void OnAlarmRaised(string id)
+        {
+            if (alarmRaised != null)
+            {
+                alarmRaised(id);
             }
         }
 

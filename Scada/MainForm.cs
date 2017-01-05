@@ -22,6 +22,7 @@ namespace Scada
             this.dataConcentratorManager = dataConcentratorManager;
             InitTags();
             dataConcentratorManager.valueChanged += new ValueChangedHandler(RefreshTag);
+            dataConcentratorManager.alarmRaised += new AlarmRaisedHandler(ShowAlarm);
         }
 
         bool AddTag(Tag tag)
@@ -48,6 +49,18 @@ namespace Scada
             }
             item.SubItems.Add(val.ToString());
             tagListView.Items.Add(item);
+        }
+
+        void ShowAlarm(string id)
+        {
+            AlarmDto alarm = dataConcentratorManager.GetAlarmFromDatabase(id);
+            ListViewItem item = new ListViewItem(alarm.TagId);
+            item.SubItems.Add(alarm.Message);
+            item.SubItems.Add(alarm.Time.ToString());
+            listViewAlarms.Invoke(
+                new MethodInvoker(delegate() {
+                    listViewAlarms.Items.Add(item);
+                }));
         }
 
 
