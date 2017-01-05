@@ -21,6 +21,14 @@ namespace DataConcentrator
             this.time = time;
         }
 
+        public AlarmDto(string id, string tagId, string message, DateTime time)
+        {
+            this.id = id;
+            this.tagId = tagId;
+            this.message = message;
+            this.time = time;
+        }
+
         public string Id
         {
             get { return id; }

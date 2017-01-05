@@ -20,12 +20,9 @@ namespace DataConcentrator
     public class DataConcentratorManager : IDataConcentrator
     {
         PLCSimulatorManager plcSimulatorManager;
+        private AlarmDB alarmDb;
 
-        public PLCSimulatorManager PlcSimulatorManager
-        {
-            get { return plcSimulatorManager; }
-            set { plcSimulatorManager = value; }
-        }
+
 
         private Dictionary<string, Tag> tags;
         private Dictionary<string, Thread> tagThreads;
@@ -38,6 +35,7 @@ namespace DataConcentrator
 
         public DataConcentratorManager()
         {
+            alarmDb = new AlarmDB();
             plcSimulatorManager = new PLCSimulatorManager();
             plcSimulatorManager.StartPLCSimulator();
 
@@ -47,6 +45,11 @@ namespace DataConcentrator
 
             XmlDeserialisation();
 
+        }
+        public PLCSimulatorManager PlcSimulatorManager
+        {
+            get { return plcSimulatorManager; }
+            set { plcSimulatorManager = value; }
         }
 
         public Tag GetTagById(string id)
@@ -193,7 +196,8 @@ namespace DataConcentrator
                         if (alarm.CheckAlarm(newValue, oldValue))
                         {
                             AlarmDto alarmDto = new AlarmDto(tag.Id, alarm.Message, DateTime.Now);
-                            database.Add(alarmDto.Id, alarmDto);
+                            //database.Add(alarmDto.Id, alarmDto);
+                            alarmDb.AddAlarm(alarmDto);
                             OnAlarmRaised(alarmDto.Id);
                         }
                     }
@@ -205,7 +209,7 @@ namespace DataConcentrator
 
         public AlarmDto GetAlarmFromDatabase(string id)
         {
-            return database[id];
+            return alarmDb.GetAlarm(id);
         }
 
         public void ScanDigital(object o)
