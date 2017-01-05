@@ -49,5 +49,23 @@ namespace DataConcentrator
             get { return message; }
             set { message = value; }
         }
+
+        protected bool Equals(Alarm other)
+        {
+            return string.Equals(id, other.id);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((Alarm) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return (id != null ? id.GetHashCode() : 0);
+        }
     }
 }

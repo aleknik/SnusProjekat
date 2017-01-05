@@ -117,7 +117,8 @@ namespace Scada
                 string type = tagListView.SelectedItems[0].SubItems[1].Text;
                 if (type == "AI" || type == "DI")
                 {
-                    MessageBox.Show("AI or DI");
+                    Form form = new AlarmsForm(id, dataConcentratorManager);
+                    form.Show();
                 }
                 else if (type == "AO" || type == "DO")
                 {

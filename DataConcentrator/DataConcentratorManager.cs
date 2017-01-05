@@ -39,6 +39,11 @@ namespace DataConcentrator
 
         }
 
+        public Tag GetTagById(string id)
+        {
+            return tags[id];
+        }
+
         public void XmlSerialisation()
         {
             try
@@ -127,7 +132,22 @@ namespace DataConcentrator
 
         public bool AddAlarm(string tagId, Alarm alarm)
         {
-            throw new NotImplementedException();
+            if (!tags.ContainsKey(tagId))
+                return false;
+
+            Tag tag = tags[tagId];
+            if (tag.GetType() != typeof(AITag))
+                return false;
+
+            AITag aiTag = (AITag) tag;
+
+            if (aiTag.Alarms.Contains(alarm))
+                return false;
+
+            aiTag.Alarms.Add(alarm);
+
+            return true;
+
         }
 
         public bool RemoveAlarm(string tagId, string alarmId)
