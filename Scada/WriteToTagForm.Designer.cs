@@ -28,14 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.textBoxValue = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonOK
             // 
-            this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonOK.Location = new System.Drawing.Point(226, 169);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 23);
@@ -56,22 +59,38 @@
             // 
             // textBoxValue
             // 
-            this.textBoxValue.Location = new System.Drawing.Point(96, 93);
+            this.textBoxValue.Location = new System.Drawing.Point(137, 84);
             this.textBoxValue.Name = "textBoxValue";
             this.textBoxValue.Size = new System.Drawing.Size(128, 20);
             this.textBoxValue.TabIndex = 2;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(94, 87);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(37, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Value:";
             // 
             // WriteToTagForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(313, 221);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxValue);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOK);
             this.Name = "WriteToTagForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WriteToTagForm";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -82,5 +101,7 @@
         private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.TextBox textBoxValue;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Label label1;
     }
 }

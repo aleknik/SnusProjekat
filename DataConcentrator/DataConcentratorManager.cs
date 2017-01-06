@@ -35,6 +35,7 @@ namespace DataConcentrator
 
         public DataConcentratorManager()
         {
+            string path = System.IO.Directory.GetCurrentDirectory();
             alarmDb = new AlarmDB();
             plcSimulatorManager = new PLCSimulatorManager();
             plcSimulatorManager.StartPLCSimulator();
@@ -112,14 +113,14 @@ namespace DataConcentrator
                 if (tag.GetType() == typeof(AITag))
                 {
                     Thread thread = new Thread(new ParameterizedThreadStart(ScanAnalog));
-                    thread.IsBackground = true;
+                    //thread.IsBackground = true;
                     thread.Start(tag);
                     tagThreads.Add(tag.Id, thread);
                 }
                 else if (tag.GetType() == typeof(DITag))
                 {
                     Thread thread = new Thread(new ParameterizedThreadStart(ScanDigital));
-                    thread.IsBackground = true;
+                    //thread.IsBackground = true;
                     thread.Start(tag);
                     tagThreads.Add(tag.Id, thread);
                 }
@@ -182,8 +183,9 @@ namespace DataConcentrator
         public void ScanAnalog(object o)
         {
             AITag tag = (AITag) o;
-            double newValue = 0;
-            double oldValue = 0;
+            double newValue = plcSimulatorManager.Read(tag.Address);
+            OnValueChanged(tag.Id, newValue);
+            double oldValue = newValue;
             while (true)
             {
                 newValue = plcSimulatorManager.Read(tag.Address);
@@ -215,11 +217,12 @@ namespace DataConcentrator
         public void ScanDigital(object o)
         {
             DITag tag = (DITag)o;
-            double newValue = 0;
-            double oldValue = 0;
+            double newValue = plcSimulatorManager.Read(tag.Address);
+            double oldValue = newValue;
+            OnValueChanged(tag.Id, newValue);
             while (true)
             {
-                double value = plcSimulatorManager.Read(tag.Address);
+                newValue = plcSimulatorManager.Read(tag.Address);
                 if (Math.Abs(newValue - oldValue) > TOLERANCE)
                 {
                     OnValueChanged(tag.Id, newValue);

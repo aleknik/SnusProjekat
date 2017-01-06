@@ -21,15 +21,20 @@ namespace Scada
             InitializeComponent();
             this.dataConcentratorManager = dataConcentratorManager;
             InitTags();
-            dataConcentratorManager.valueChanged += new ValueChangedHandler(RefreshTag);
+            
             dataConcentratorManager.alarmRaised += new AlarmRaisedHandler(ShowAlarm);
+            dataConcentratorManager.valueChanged += new ValueChangedHandler(RefreshTag);
+
         }
 
-        bool AddTag(Tag tag)
+        void AddTag(Tag tag)
         {
+            if (!dataConcentratorManager.AddTag(tag))
+            {
+                MessageBox.Show("Tag name \"" + tag.Id + "\" already exists");
+                return;
+            }
             AddTagToListView(tag);
-            dataConcentratorManager.AddTag(tag);
-            return true;
         }
 
         void AddTagToListView(Tag tag)
@@ -37,17 +42,39 @@ namespace Scada
             ListViewItem item = new ListViewItem(tag.Id);
             item.SubItems.Add(DataConcentratorManager.GetTagType(tag));
 
-            double val = 0;
+            string val = "";
+            string scanTime = "";
+            string initialValue = "";
+            string unit = "";
+
             if (tag.GetType() == typeof(AOTag))
             {
-                val = ((AOTag)tag).InitialValue;
+                val = ((AOTag) tag).InitialValue.ToString();
+                unit = ((AOTag) tag).Unit;
+                initialValue = ((AOTag) tag).InitialValue.ToString();
 
             }
             else if (tag.GetType() == typeof(DOTag))
             {
-                val = ((DOTag) tag).InitialValue;
+                val = ((DOTag) tag).InitialValue.ToString();
+                initialValue = ((DOTag) tag).InitialValue.ToString();
             }
-            item.SubItems.Add(val.ToString());
+            else if (tag.GetType() == typeof(AITag))
+            {
+                scanTime = ((AITag) tag).ScanTime.ToString();
+                unit = ((AITag) tag).Unit;
+            }
+            else if (tag.GetType() == typeof(DITag))
+            {
+                scanTime = ((DITag) tag).ScanTime.ToString();
+            }
+            item.SubItems.Add(val);
+            item.SubItems.Add(tag.Address);
+            item.SubItems.Add(scanTime);
+            item.SubItems.Add(initialValue);
+            item.SubItems.Add(unit);
+
+
             tagListView.Items.Add(item);
         }
 
@@ -59,17 +86,25 @@ namespace Scada
             item.SubItems.Add(alarm.Message);
             item.SubItems.Add(alarm.Time.ToString());
             item.BackColor = Color.Red;
-            item.EnsureVisible();
             listViewAlarms.Invoke(
                 new MethodInvoker(delegate() {
                     listViewAlarms.Items.Add(item);
+                    listViewAlarms.EnsureVisible(listViewAlarms.Items.Count - 1);
                 }));
         }
 
 
         void RefreshTag(string id, double value)
         {
-            SetText(id, value.ToString());
+            try
+            {
+                SetText(id, value.ToString());
+            }
+            catch (Exception)
+            {
+                
+            }
+            
 
         }
 
@@ -90,6 +125,7 @@ namespace Scada
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
+            dataConcentratorManager.close();
             dataConcentratorManager.XmlSerialisation();
             Environment.Exit(0);
         }
@@ -101,6 +137,7 @@ namespace Scada
             if (form.DialogResult == DialogResult.OK)
             {
                 AddTag(form.Tag);
+               
             }
         }
 
@@ -130,7 +167,7 @@ namespace Scada
             {
                 string id = tagListView.SelectedItems[0].Text;
                 string type = tagListView.SelectedItems[0].SubItems[1].Text;
-                if (type == "AI" || type == "DI")
+                if (type == "AI")
                 {
                     Form form = new AlarmsForm(id, dataConcentratorManager);
                     form.Show();

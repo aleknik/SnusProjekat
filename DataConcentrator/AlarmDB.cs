@@ -54,9 +54,9 @@ namespace DataConcentrator
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 reader.Read();
-                string id = reader.GetString(0);
-                string tagId = reader.GetString(1);
-                string message = reader.GetString(2);
+                string id = reader.GetString(0).Trim();
+                string tagId = reader.GetString(1).Trim();
+                string message = reader.GetString(2).Trim();
                 DateTime time = reader.GetDateTime(3);
                 return  new AlarmDto(id, tagId, message, time);
             }

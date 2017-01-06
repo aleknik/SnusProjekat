@@ -38,11 +38,40 @@ namespace Scada
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
+            errorProvider1.Clear();
+            if (!CheckFields())
+                return;
+
             double point = Convert.ToDouble(textBoxAlarmPoint.Text);
             ActivationType type = (ActivationType) Enum.Parse(typeof(ActivationType), comboBoxAlarmType.SelectedItem.ToString());
             string message = textBoxAlarmMessage.Text;
 
             alarm = new Alarm(point, type, message);
+
+            this.DialogResult = DialogResult.OK;
+        }
+
+
+        private bool CheckFields()
+        {
+            bool ok = true;
+            if (!Utils.IsTextBoxNumber(textBoxAlarmPoint))
+            {
+                errorProvider1.SetError(textBoxAlarmPoint, "This is a number only field");
+                ok = false;
+            }
+            if (Utils.IsEmpty(comboBoxAlarmType, errorProvider1))
+            {
+                errorProvider1.SetError(comboBoxAlarmType, "Field is required");
+                ok = false;
+            }
+            if (Utils.IsEmpty(textBoxAlarmMessage, errorProvider1))
+            {
+                errorProvider1.SetError(textBoxAlarmMessage, "Field is required");
+                ok = false;
+            }
+
+            return ok;
         }
     }
 }

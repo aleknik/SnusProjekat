@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,29 @@ namespace Scada
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            value = Int32.Parse(textBoxValue.Text);  
+            errorProvider1.Clear();
+            if (!CheckField())
+                return;
+            value = double.Parse(textBoxValue.Text);
+            this.DialogResult = DialogResult.OK;
+        }
+
+
+        private bool CheckField()
+        {
+            bool ok = true;
+            if (!Utils.IsTextBoxNumber(textBoxValue))
+            {
+                errorProvider1.SetError(textBoxValue, "This is a number only field");
+                ok = false;
+            }
+            if (Utils.IsEmpty(textBoxValue, errorProvider1))
+            {
+                errorProvider1.SetError(textBoxValue, "Field is required");
+                ok = false;
+            }
+
+            return ok;
         }
     }
 }

@@ -33,6 +33,10 @@
             this.idColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TypeColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.valueColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonRemoveTag = new System.Windows.Forms.Button();
             this.listViewAlarms = new System.Windows.Forms.ListView();
             this.tagID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -55,7 +59,11 @@
             this.tagListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.idColumn,
             this.TypeColumn,
-            this.valueColumn});
+            this.valueColumn,
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
             this.tagListView.FullRowSelect = true;
             this.tagListView.Location = new System.Drawing.Point(12, 146);
             this.tagListView.Name = "tagListView";
@@ -77,6 +85,26 @@
             // 
             this.valueColumn.Text = "Value";
             this.valueColumn.Width = 120;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Address";
+            this.columnHeader1.Width = 107;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Scan time";
+            this.columnHeader2.Width = 102;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Initial value";
+            this.columnHeader3.Width = 105;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Unit";
+            this.columnHeader4.Width = 68;
             // 
             // buttonRemoveTag
             // 
@@ -110,7 +138,7 @@
             // 
             // message
             // 
-            this.message.Text = "message";
+            this.message.Text = "Message";
             this.message.Width = 110;
             // 
             // time
@@ -145,6 +173,10 @@
         private System.Windows.Forms.ColumnHeader tagID;
         private System.Windows.Forms.ColumnHeader message;
         private System.Windows.Forms.ColumnHeader time;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }
 
