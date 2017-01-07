@@ -76,7 +76,6 @@ namespace DataConcentrator
             }
             catch (Exception)
             {
-                throw;
             }
 
         }

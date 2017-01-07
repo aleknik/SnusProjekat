@@ -25,18 +25,14 @@ namespace DataConcentrator
                 string tagId = alarmDto.TagId;
                 string message = alarmDto.Message;
                 string time = alarmDto.Time.ToString();
-                SqlCommand command = new SqlCommand(string.Format("INSERT INTO Alarm VALUES({0}, {1}, {2}, {3})",
-                    id, tagId, message, time), connection);
-                //int n = command.ExecuteNonQuery();
+                SqlCommand command = new SqlCommand("INSERT INTO Alarm values(@id,@tagId,@message,@time)", connection);
 
-                SqlCommand prikaz = new SqlCommand("INSERT INTO Alarm values(@id,@tagId,@message,@time)", connection);
-
-                prikaz.Parameters.AddWithValue("@id", id);
-                prikaz.Parameters.AddWithValue("@tagId", tagId);
-                prikaz.Parameters.AddWithValue("@message", message);
-                prikaz.Parameters.AddWithValue("@time", time);
+                command.Parameters.AddWithValue("@id", id);
+                command.Parameters.AddWithValue("@tagId", tagId);
+                command.Parameters.AddWithValue("@message", message);
+                command.Parameters.AddWithValue("@time", time);
                 connection.Open();
-                prikaz.ExecuteNonQuery();
+                command.ExecuteNonQuery();
 
                 connection.Close();
             }
