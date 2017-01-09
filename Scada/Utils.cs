@@ -37,5 +37,19 @@ namespace Scada
             }
             return false;
         }
+
+        public static bool CheckScanTime(TextBox textBox, ErrorProvider errorProvider)
+        {
+            if (IsTextBoxNumber(textBox))
+            {
+                int test = 0;
+                if (Int32.TryParse(textBox.Text, out test))
+                {
+                    return true;
+                }
+            }
+            errorProvider.SetError(textBox, "Field must be an integer greater then 0");
+            return false;
+        }
     }
 }

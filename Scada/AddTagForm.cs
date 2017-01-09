@@ -166,29 +166,28 @@ namespace Scada
         private bool CheckAIFields()
         {
             bool ok = true;
-            if (!Utils.IsTextBoxNumber(textBoxAiScanTime))
+            if (!Utils.CheckScanTime(textBoxAiScanTime, errorProvider1))
             {
-                errorProvider1.SetError(textBoxAiScanTime, "This is a number only field");
+                ok = false;
+            }
+            else if (double.Parse(textBoxAiScanTime.Text) <= 0)
+            {
                 ok = false;
             }              
             if (Utils.IsEmpty(textBoxAiID, errorProvider1))
             {
-                errorProvider1.SetError(textBoxAiID, "Field is required");
                 ok = false;
             }
             if (Utils.IsEmpty(textBoxAiDesc, errorProvider1))
             {
-                errorProvider1.SetError(textBoxAiDesc, "Field is required");
                 ok = false;
             }
             if (Utils.IsEmpty(textBoxAiUnit, errorProvider1))
             {
-                errorProvider1.SetError(textBoxAiUnit, "Field is required");
                 ok = false;
             }
             if (Utils.IsEmpty(comboBoxAiAddress, errorProvider1))
             {
-                errorProvider1.SetError(comboBoxAiAddress, "Field is required");
                 ok = false;
             }
 
@@ -200,27 +199,23 @@ namespace Scada
             bool ok = true;
             if (!Utils.IsTextBoxNumber(textBoxAoInitVal))
             {
-                errorProvider1.SetError(textBoxAoInitVal, "This is a number only field");
+
                 ok = false;
             }
             if (Utils.IsEmpty(textBoxAoID, errorProvider1))
             {
-                errorProvider1.SetError(textBoxAoID, "Field is required");
                 ok = false;
             }
             if (Utils.IsEmpty(textBoxAoDesc, errorProvider1))
             {
-                errorProvider1.SetError(textBoxAoDesc, "Field is required");
                 ok = false;
             }
             if (Utils.IsEmpty(textBoxAoUnit, errorProvider1))
             {
-                errorProvider1.SetError(textBoxAoUnit, "Field is required");
                 ok = false;
             }
             if (Utils.IsEmpty(comboBoxAoAddress, errorProvider1))
             {
-                errorProvider1.SetError(comboBoxAoAddress, "Field is required");
                 ok = false;
             }
 
@@ -230,24 +225,20 @@ namespace Scada
         private bool CheckDIFields()
         {
             bool ok = true;
-            if (!Utils.IsTextBoxNumber(textBoxDiScanTime))
+            if (!Utils.CheckScanTime(textBoxDiScanTime, errorProvider1))
             {
-                errorProvider1.SetError(textBoxDiScanTime, "This is a number only field");
                 ok = false;
             }
             if (Utils.IsEmpty(textBoxDiID, errorProvider1))
             {
-                errorProvider1.SetError(textBoxAiID, "Field is required");
                 ok = false;
             }
             if (Utils.IsEmpty(textBoxDiDesc, errorProvider1))
             {
-                errorProvider1.SetError(textBoxDiDesc, "Field is required");
                 ok = false;
             }
             if (Utils.IsEmpty(comboBoxDiAddress, errorProvider1))
             {
-                errorProvider1.SetError(comboBoxDiAddress, "Field is required");
                 ok = false;
             }
 
@@ -259,22 +250,18 @@ namespace Scada
             bool ok = true;
             if (!Utils.IsTextBoxNumber(textBoxDoInitVal))
             {
-                errorProvider1.SetError(textBoxDoInitVal, "This is a number only field");
                 ok = false;
             }
             if (Utils.IsEmpty(textBoxDoID, errorProvider1))
             {
-                errorProvider1.SetError(textBoxDoID, "Field is required");
                 ok = false;
             }
             if (Utils.IsEmpty(textBoxDoDesc, errorProvider1))
             {
-                errorProvider1.SetError(textBoxDoDesc, "Field is required");
                 ok = false;
             }
             if (Utils.IsEmpty(comboBoxDoAddress, errorProvider1))
             {
-                errorProvider1.SetError(comboBoxDoAddress, "Field is required");
                 ok = false;
             }
             return ok;

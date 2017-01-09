@@ -38,14 +38,13 @@ namespace Scada
         private bool CheckField()
         {
             bool ok = true;
+
             if (!Utils.IsTextBoxNumber(textBoxValue))
             {
-                errorProvider1.SetError(textBoxValue, "This is a number only field");
                 ok = false;
             }
             if (Utils.IsEmpty(textBoxValue, errorProvider1))
             {
-                errorProvider1.SetError(textBoxValue, "Field is required");
                 ok = false;
             }
 
