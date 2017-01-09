@@ -42,13 +42,15 @@
             this.tagID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.message = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.time = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonAddTAg
             // 
-            this.buttonAddTAg.Location = new System.Drawing.Point(12, 88);
+            this.buttonAddTAg.Location = new System.Drawing.Point(12, 12);
             this.buttonAddTAg.Name = "buttonAddTAg";
-            this.buttonAddTAg.Size = new System.Drawing.Size(75, 23);
+            this.buttonAddTAg.Size = new System.Drawing.Size(114, 50);
             this.buttonAddTAg.TabIndex = 1;
             this.buttonAddTAg.Text = "Add tag";
             this.buttonAddTAg.UseVisualStyleBackColor = true;
@@ -65,10 +67,10 @@
             this.columnHeader3,
             this.columnHeader4});
             this.tagListView.FullRowSelect = true;
-            this.tagListView.Location = new System.Drawing.Point(12, 146);
+            this.tagListView.Location = new System.Drawing.Point(12, 96);
             this.tagListView.Name = "tagListView";
             this.tagListView.Size = new System.Drawing.Size(737, 200);
-            this.tagListView.TabIndex = 4;
+            this.tagListView.TabIndex = 1;
             this.tagListView.UseCompatibleStateImageBehavior = false;
             this.tagListView.View = System.Windows.Forms.View.Details;
             this.tagListView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.tagListView_MouseDoubleClick);
@@ -76,6 +78,7 @@
             // idColumn
             // 
             this.idColumn.Text = "ID";
+            this.idColumn.Width = 109;
             // 
             // TypeColumn
             // 
@@ -84,7 +87,7 @@
             // valueColumn
             // 
             this.valueColumn.Text = "Value";
-            this.valueColumn.Width = 120;
+            this.valueColumn.Width = 87;
             // 
             // columnHeader1
             // 
@@ -94,7 +97,7 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Scan time";
-            this.columnHeader2.Width = 102;
+            this.columnHeader2.Width = 127;
             // 
             // columnHeader3
             // 
@@ -104,13 +107,13 @@
             // columnHeader4
             // 
             this.columnHeader4.Text = "Unit";
-            this.columnHeader4.Width = 68;
+            this.columnHeader4.Width = 83;
             // 
             // buttonRemoveTag
             // 
-            this.buttonRemoveTag.Location = new System.Drawing.Point(633, 88);
+            this.buttonRemoveTag.Location = new System.Drawing.Point(650, 12);
             this.buttonRemoveTag.Name = "buttonRemoveTag";
-            this.buttonRemoveTag.Size = new System.Drawing.Size(75, 23);
+            this.buttonRemoveTag.Size = new System.Drawing.Size(99, 50);
             this.buttonRemoveTag.TabIndex = 5;
             this.buttonRemoveTag.Text = "Remove tag";
             this.buttonRemoveTag.UseVisualStyleBackColor = true;
@@ -123,9 +126,9 @@
             this.message,
             this.time});
             this.listViewAlarms.FullRowSelect = true;
-            this.listViewAlarms.Location = new System.Drawing.Point(12, 352);
+            this.listViewAlarms.Location = new System.Drawing.Point(12, 323);
             this.listViewAlarms.Name = "listViewAlarms";
-            this.listViewAlarms.Size = new System.Drawing.Size(737, 185);
+            this.listViewAlarms.Size = new System.Drawing.Size(737, 200);
             this.listViewAlarms.TabIndex = 6;
             this.listViewAlarms.UseCompatibleStateImageBehavior = false;
             this.listViewAlarms.View = System.Windows.Forms.View.Details;
@@ -134,23 +137,43 @@
             // tagID
             // 
             this.tagID.Text = "Tag ID";
-            this.tagID.Width = 84;
+            this.tagID.Width = 106;
             // 
             // message
             // 
             this.message.Text = "Message";
-            this.message.Width = 110;
+            this.message.Width = 281;
             // 
             // time
             // 
             this.time.Text = "Time";
             this.time.Width = 128;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 80);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(31, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Tags";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 307);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Alarms";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(761, 549);
+            this.ClientSize = new System.Drawing.Size(761, 531);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.listViewAlarms);
             this.Controls.Add(this.buttonRemoveTag);
             this.Controls.Add(this.tagListView);
@@ -159,6 +182,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Scada";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -177,6 +201,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 

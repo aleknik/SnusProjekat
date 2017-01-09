@@ -55,17 +55,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AITag.cs" />
-    <Compile Include="Alarm.cs" />
+    <Compile Include="model\AITag.cs" />
+    <Compile Include="model\Alarm.cs" />
     <Compile Include="AlarmDB.cs" />
-    <Compile Include="AlarmDto.cs" />
-    <Compile Include="AOTag.cs" />
+    <Compile Include="model\AlarmDto.cs" />
+    <Compile Include="model\AOTag.cs" />
     <Compile Include="DataConcentratorManager.cs" />
-    <Compile Include="DITag.cs" />
-    <Compile Include="DOTag.cs" />
+    <Compile Include="model\DITag.cs" />
+    <Compile Include="model\DOTag.cs" />
     <Compile Include="IDataConcentrator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tag.cs" />
+    <Compile Include="model\Tag.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PLCSimulator\PLCSimulator.csproj">
