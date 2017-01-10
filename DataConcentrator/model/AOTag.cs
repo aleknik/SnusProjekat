@@ -20,7 +20,8 @@ namespace DataConcentrator
             this.unit = unit;
         }
 
-        public AOTag(string id, string description, string address, double initialValue, string unit) : base(id, description, address)
+        public AOTag(string id, string description, string address, double initialValue, string unit)
+            : base(id, description, address)
         {
             this.initialValue = initialValue;
             this.unit = unit;

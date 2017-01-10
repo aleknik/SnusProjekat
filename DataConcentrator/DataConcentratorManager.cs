@@ -14,6 +14,7 @@ using System.Xml.Serialization;
 namespace DataConcentrator
 {
     public delegate void ValueChangedHandler(string id, double value);
+
     public delegate void AlarmRaisedHandler(string id);
 
 
@@ -21,7 +22,6 @@ namespace DataConcentrator
     {
         PLCSimulatorManager plcSimulatorManager;
         private AlarmDB alarmDb;
-
 
 
         private Dictionary<string, Tag> tags;
@@ -45,8 +45,8 @@ namespace DataConcentrator
             database = new Dictionary<string, AlarmDto>();
 
             XmlDeserialisation();
-
         }
+
         public PLCSimulatorManager PlcSimulatorManager
         {
             get { return plcSimulatorManager; }
@@ -69,15 +69,12 @@ namespace DataConcentrator
                 using (TextWriter textWriter = new StreamWriter("Configuration.xml"))
 
                 {
-
                     serializer.Serialize(textWriter, tagList);
                 }
-
             }
             catch (Exception)
             {
             }
-
         }
 
         public List<Tag> XmlDeserialisation()
@@ -91,17 +88,14 @@ namespace DataConcentrator
                 using (TextReader textReader = new StreamReader("Configuration.xml"))
 
                 {
-
-                    tagDtos = (List<Tag>)serializer.Deserialize(textReader);
+                    tagDtos = (List<Tag>) serializer.Deserialize(textReader);
                     return tagDtos;
-
                 }
             }
             catch (Exception)
             {
                 return new List<Tag>();
             }
-
         }
 
         public bool AddTag(Tag tag)
@@ -159,7 +153,6 @@ namespace DataConcentrator
             aiTag.Alarms.Add(alarm);
 
             return true;
-
         }
 
         public bool RemoveAlarm(string tagId, string alarmId)
@@ -215,7 +208,7 @@ namespace DataConcentrator
 
         public void ScanDigital(object o)
         {
-            DITag tag = (DITag)o;
+            DITag tag = (DITag) o;
             double newValue = plcSimulatorManager.Read(tag.Address);
             double oldValue = newValue;
             OnValueChanged(tag.Id, newValue);

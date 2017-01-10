@@ -18,7 +18,8 @@ namespace DataConcentrator
             this.initialValue = initialValue;
         }
 
-        public DOTag(string id, string description, string address, double initialValue) : base(id, description, address)
+        public DOTag(string id, string description, string address, double initialValue)
+            : base(id, description, address)
         {
             this.initialValue = initialValue;
         }

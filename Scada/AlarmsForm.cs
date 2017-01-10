@@ -14,6 +14,7 @@ namespace Scada
     {
         private DataConcentratorManager dataConcentratorManager;
         private AITag tag;
+
         public AlarmsForm(string id, DataConcentratorManager dataConcentratorManager)
         {
             InitializeComponent();
@@ -67,8 +68,6 @@ namespace Scada
                 Alarm alarm = (Alarm) selectedItem.Tag;
                 dataConcentratorManager.RemoveAlarm(tag.Id, alarm.Id);
                 listViewAlarms.Items.Remove(selectedItem);
-                
-
             }
         }
     }

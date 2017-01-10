@@ -23,7 +23,8 @@ namespace DataConcentrator
             this.unit = unit;
         }
 
-        public AITag(string id, string description, string address, int scanTime, string unit) : base(id, description, address)
+        public AITag(string id, string description, string address, int scanTime, string unit)
+            : base(id, description, address)
         {
             alarms = new List<Alarm>();
             this.scanTime = scanTime;

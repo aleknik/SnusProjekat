@@ -45,25 +45,21 @@ namespace Scada
         void InitAnalogInputAddresses(ComboBox comboBox)
         {
             comboBox.Items.AddRange(dataConcentratorManager.PlcSimulatorManager.GetAnalogInputs());
-
         }
 
         void InitAnalogOutputAddresses(ComboBox comboBox)
         {
             comboBox.Items.AddRange(dataConcentratorManager.PlcSimulatorManager.GetAnalogOutputs());
-
         }
 
         void InitDigitalInputAddresses(ComboBox comboBox)
         {
             comboBox.Items.AddRange(dataConcentratorManager.PlcSimulatorManager.GetDigitalInputs());
-
         }
 
         void InitDigitalOutputAddresses(ComboBox comboBox)
         {
             comboBox.Items.AddRange(dataConcentratorManager.PlcSimulatorManager.GetDigitalOutputs());
-
         }
 
         private void buttonNext_Click(object sender, EventArgs e)
@@ -79,7 +75,7 @@ namespace Scada
             panelAnalogInput.Hide();
             panelDigitalInput.Hide();
             panelAnalogOutput.Hide();
-            switch ((string)comboBoxType.SelectedItem)
+            switch ((string) comboBoxType.SelectedItem)
             {
                 case "Analog input":
                     panelAnalogInput.Show();
@@ -161,7 +157,6 @@ namespace Scada
             this.DialogResult = DialogResult.OK;
         }
 
-        
 
         private bool CheckAIFields()
         {
@@ -173,7 +168,7 @@ namespace Scada
             else if (double.Parse(textBoxAiScanTime.Text) <= 0)
             {
                 ok = false;
-            }              
+            }
             if (Utils.IsEmpty(textBoxAiID, errorProvider1))
             {
                 ok = false;
@@ -199,7 +194,6 @@ namespace Scada
             bool ok = true;
             if (!Utils.IsTextBoxNumber(textBoxAoInitVal))
             {
-
                 ok = false;
             }
             if (Utils.IsEmpty(textBoxAoID, errorProvider1))

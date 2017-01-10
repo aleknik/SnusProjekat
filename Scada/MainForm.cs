@@ -21,10 +21,9 @@ namespace Scada
             InitializeComponent();
             this.dataConcentratorManager = dataConcentratorManager;
             InitTags();
-            
+
             dataConcentratorManager.alarmRaised += new AlarmRaisedHandler(ShowAlarm);
             dataConcentratorManager.valueChanged += new ValueChangedHandler(RefreshTag);
-
         }
 
         void AddTag(Tag tag)
@@ -52,7 +51,6 @@ namespace Scada
                 val = ((AOTag) tag).InitialValue.ToString();
                 unit = ((AOTag) tag).Unit;
                 initialValue = ((AOTag) tag).InitialValue.ToString();
-
             }
             else if (tag.GetType() == typeof(DOTag))
             {
@@ -87,7 +85,8 @@ namespace Scada
             item.SubItems.Add(alarm.Time.ToString());
             item.BackColor = Color.Red;
             listViewAlarms.Invoke(
-                new MethodInvoker(delegate() {
+                new MethodInvoker(delegate()
+                {
                     listViewAlarms.Items.Add(item);
                     listViewAlarms.EnsureVisible(listViewAlarms.Items.Count - 1);
                 }));
@@ -102,10 +101,7 @@ namespace Scada
             }
             catch (Exception)
             {
-                
             }
-            
-
         }
 
         private void SetText(string id, string text)
@@ -120,7 +116,6 @@ namespace Scada
                 ListViewItem item = tagListView.FindItemWithText(id);
                 item.SubItems[2].Text = text;
             }
-
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -137,7 +132,6 @@ namespace Scada
             if (form.DialogResult == DialogResult.OK)
             {
                 AddTag(form.Tag);
-               
             }
         }
 
@@ -147,7 +141,6 @@ namespace Scada
             {
                 tagListView.Items.Remove(selectedItem);
                 dataConcentratorManager.RemoveTag(selectedItem.Text);
-                
             }
         }
 
@@ -174,7 +167,8 @@ namespace Scada
                 }
                 else if (type == "AO" || type == "DO")
                 {
-                    WriteToTagForm form = new WriteToTagForm(Convert.ToDouble(tagListView.SelectedItems[0].SubItems[2].Text));
+                    WriteToTagForm form =
+                        new WriteToTagForm(Convert.ToDouble(tagListView.SelectedItems[0].SubItems[2].Text));
                     form.ShowDialog();
                     if (form.DialogResult == DialogResult.OK)
                     {

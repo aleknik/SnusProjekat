@@ -20,7 +20,6 @@ namespace DataConcentrator
         {
             using (SqlConnection connection = new SqlConnection(connString))
             {
-                
                 string id = alarmDto.Id;
                 string tagId = alarmDto.TagId;
                 string message = alarmDto.Message;
@@ -42,9 +41,8 @@ namespace DataConcentrator
         {
             using (SqlConnection connection = new SqlConnection(connString))
             {
-
                 SqlCommand command =
-                new SqlCommand("SELECT * FROM Alarm WHERE Id = @id", connection);
+                    new SqlCommand("SELECT * FROM Alarm WHERE Id = @id", connection);
                 command.Parameters.AddWithValue("@id", alarmId);
 
                 connection.Open();
@@ -54,7 +52,7 @@ namespace DataConcentrator
                 string tagId = reader.GetString(1).Trim();
                 string message = reader.GetString(2).Trim();
                 DateTime time = reader.GetDateTime(3);
-                return  new AlarmDto(id, tagId, message, time);
+                return new AlarmDto(id, tagId, message, time);
             }
         }
     }

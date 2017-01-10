@@ -58,7 +58,6 @@ namespace PLCSimulator
             {
                 addresses[c] = addressValues.Keys.ToList()[i];
                 c++;
-
             }
             return addresses;
         }
@@ -67,11 +66,10 @@ namespace PLCSimulator
         {
             string[] addresses = new string[4];
             int c = 0;
-            for (int i= 4; i < 8; i++)
+            for (int i = 4; i < 8; i++)
             {
                 addresses[c] = addressValues.Keys.ToList()[i];
                 c++;
-
             }
             return addresses;
         }
@@ -82,7 +80,6 @@ namespace PLCSimulator
             addresses[0] = addressValues.Keys.ToList()[8];
 
             return addresses;
-
         }
 
         public string[] GetDigitalOutputs()
@@ -100,10 +97,10 @@ namespace PLCSimulator
 
                 lock (locker)
                 {
-                    addressValues["ADDR001"] = 100 * Math.Sin((double)DateTime.Now.Second / 60 * Math.PI); //SINE
-                    addressValues["ADDR002"] = 100 * DateTime.Now.Second / 60; //RAMP
-                    addressValues["ADDR003"] = 100 * Math.Sin((double)DateTime.Now.Second / 60 * Math.PI); //SINE
-                    addressValues["ADDR004"] = 100 * DateTime.Now.Second / 60; //RAMP
+                    addressValues["ADDR001"] = 100*Math.Sin((double) DateTime.Now.Second/60*Math.PI); //SINE
+                    addressValues["ADDR002"] = 100*DateTime.Now.Second/60; //RAMP
+                    addressValues["ADDR003"] = 100*Math.Sin((double) DateTime.Now.Second/60*Math.PI); //SINE
+                    addressValues["ADDR004"] = 100*DateTime.Now.Second/60; //RAMP
                 }
 
                 //... 
@@ -127,7 +124,7 @@ namespace PLCSimulator
                         addressValues["ADDR009"] = 0;
                     }
                 }
-                  
+
                 //... 
             }
         }
@@ -151,7 +148,6 @@ namespace PLCSimulator
                 addressValues[address] = value;
                 return true;
             }
-            
         }
     }
 }

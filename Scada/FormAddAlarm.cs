@@ -18,7 +18,6 @@ namespace Scada
         {
             InitializeComponent();
             InitTypes();
-
         }
 
         private void InitTypes()
@@ -43,7 +42,8 @@ namespace Scada
                 return;
 
             double point = Convert.ToDouble(textBoxAlarmPoint.Text);
-            ActivationType type = (ActivationType) Enum.Parse(typeof(ActivationType), comboBoxAlarmType.SelectedItem.ToString());
+            ActivationType type =
+                (ActivationType) Enum.Parse(typeof(ActivationType), comboBoxAlarmType.SelectedItem.ToString());
             string message = textBoxAlarmMessage.Text;
 
             alarm = new Alarm(point, type, message);
