@@ -126,9 +126,13 @@ namespace DataConcentrator
                 return false;
             }
 
+            if (tags[id].GetType() == typeof(AITag) || tags[id].GetType() == typeof(DITag))
+            {
+                tagThreads[id].Abort();
+                tagThreads.Remove(id);
+            }
+
             tags.Remove(id);
-            tagThreads[id].Abort();
-            tagThreads.Remove(id);
 
             return true;
         }
@@ -173,7 +177,6 @@ namespace DataConcentrator
         {
             AITag tag = (AITag) o;
             double newValue = plcSimulatorManager.Read(tag.Address);
-            OnValueChanged(tag.Id, newValue);
             double oldValue = newValue;
             while (true)
             {
@@ -207,7 +210,6 @@ namespace DataConcentrator
             DITag tag = (DITag) o;
             double newValue = plcSimulatorManager.Read(tag.Address);
             double oldValue = newValue;
-            OnValueChanged(tag.Id, newValue);
             while (true)
             {
                 newValue = plcSimulatorManager.Read(tag.Address);

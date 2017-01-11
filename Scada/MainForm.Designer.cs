@@ -97,12 +97,12 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Scan time";
-            this.columnHeader2.Width = 101;
+            this.columnHeader2.Width = 107;
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "Initial value";
-            this.columnHeader3.Width = 105;
+            this.columnHeader3.Width = 122;
             // 
             // columnHeader4
             // 
@@ -142,7 +142,7 @@
             // message
             // 
             this.message.Text = "Message";
-            this.message.Width = 281;
+            this.message.Width = 497;
             // 
             // time
             // 
