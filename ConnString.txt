@@ -1,0 +1,1 @@
+Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\alepH\Desktop\SNUS\Projekat\Projekat\DataConcentrator\AlarmDatabase.mdf;Integrated Security=True

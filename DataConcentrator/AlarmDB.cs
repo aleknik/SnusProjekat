@@ -12,10 +12,8 @@ namespace DataConcentrator
 
         public AlarmDB()
         {
-            connString =
-               "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\alepH\\Desktop\\Projekat P2\\Projekat\\DataConcentrator\\AlarmDatabase.mdf\";Integrated Security = True";
-           // connString = 
-           //     "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\dev\\Projekat P2\\Projekat P2\\Projekat\\DataConcentrator\\AlarmDatabase.mdf\";Integrated Security=True";
+           GetConnectionString("..//..//..//ConnString.txt");
+               
         }
 
         public void AddAlarm(AlarmDto alarmDto)
@@ -56,6 +54,13 @@ namespace DataConcentrator
                 DateTime time = reader.GetDateTime(3);
                 return new AlarmDto(id, tagId, message, time);
             }
+        }
+
+        private void GetConnectionString(string path)
+        {
+            System.IO.StreamReader file = new System.IO.StreamReader(path);
+            connString = file.ReadLine();
+            file.Close();
         }
     }
 }
