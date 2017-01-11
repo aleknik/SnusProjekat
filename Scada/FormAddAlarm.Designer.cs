@@ -65,23 +65,23 @@
             // 
             // textBoxAlarmPoint
             // 
-            this.textBoxAlarmPoint.Location = new System.Drawing.Point(136, 36);
+            this.textBoxAlarmPoint.Location = new System.Drawing.Point(99, 68);
             this.textBoxAlarmPoint.Name = "textBoxAlarmPoint";
-            this.textBoxAlarmPoint.Size = new System.Drawing.Size(100, 20);
+            this.textBoxAlarmPoint.Size = new System.Drawing.Size(121, 20);
             this.textBoxAlarmPoint.TabIndex = 2;
             // 
             // textBoxAlarmMessage
             // 
-            this.textBoxAlarmMessage.Location = new System.Drawing.Point(136, 89);
+            this.textBoxAlarmMessage.Location = new System.Drawing.Point(99, 121);
             this.textBoxAlarmMessage.Name = "textBoxAlarmMessage";
-            this.textBoxAlarmMessage.Size = new System.Drawing.Size(100, 20);
+            this.textBoxAlarmMessage.Size = new System.Drawing.Size(121, 20);
             this.textBoxAlarmMessage.TabIndex = 3;
             // 
             // comboBoxAlarmType
             // 
             this.comboBoxAlarmType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxAlarmType.FormattingEnabled = true;
-            this.comboBoxAlarmType.Location = new System.Drawing.Point(136, 62);
+            this.comboBoxAlarmType.Location = new System.Drawing.Point(99, 94);
             this.comboBoxAlarmType.Name = "comboBoxAlarmType";
             this.comboBoxAlarmType.Size = new System.Drawing.Size(121, 21);
             this.comboBoxAlarmType.TabIndex = 4;
@@ -89,7 +89,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(49, 47);
+            this.label1.Location = new System.Drawing.Point(9, 71);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(83, 13);
             this.label1.TabIndex = 5;
@@ -98,7 +98,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(49, 70);
+            this.label2.Location = new System.Drawing.Point(9, 97);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 13);
             this.label2.TabIndex = 6;
@@ -107,11 +107,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(49, 92);
+            this.label3.Location = new System.Drawing.Point(9, 124);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 13);
+            this.label3.Size = new System.Drawing.Size(53, 13);
             this.label3.TabIndex = 7;
-            this.label3.Text = "message:";
+            this.label3.Text = "Message:";
             // 
             // errorProvider1
             // 

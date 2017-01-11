@@ -17,16 +17,14 @@ namespace DataConcentrator
 
     public delegate void AlarmRaisedHandler(string id);
 
-
     public class DataConcentratorManager : IDataConcentrator
     {
         PLCSimulatorManager plcSimulatorManager;
-        private AlarmDB alarmDb;
 
+        private AlarmDB alarmDb;
 
         private Dictionary<string, Tag> tags;
         private Dictionary<string, Thread> tagThreads;
-        private Dictionary<string, AlarmDto> database;
 
         private readonly double TOLERANCE = 0.005;
 
@@ -42,7 +40,6 @@ namespace DataConcentrator
 
             tags = new Dictionary<string, Tag>();
             tagThreads = new Dictionary<string, Thread>();
-            database = new Dictionary<string, AlarmDto>();
 
             XmlDeserialisation();
         }
@@ -106,14 +103,14 @@ namespace DataConcentrator
                 if (tag.GetType() == typeof(AITag))
                 {
                     Thread thread = new Thread(new ParameterizedThreadStart(ScanAnalog));
-                    //thread.IsBackground = true;
+                    thread.IsBackground = true;
                     thread.Start(tag);
                     tagThreads.Add(tag.Id, thread);
                 }
                 else if (tag.GetType() == typeof(DITag))
                 {
                     Thread thread = new Thread(new ParameterizedThreadStart(ScanDigital));
-                    //thread.IsBackground = true;
+                    thread.IsBackground = true;
                     thread.Start(tag);
                     tagThreads.Add(tag.Id, thread);
                 }
@@ -190,7 +187,6 @@ namespace DataConcentrator
                         if (alarm.CheckAlarm(newValue, oldValue))
                         {
                             AlarmDto alarmDto = new AlarmDto(tag.Id, alarm.Message, DateTime.Now);
-                            //database.Add(alarmDto.Id, alarmDto);
                             alarmDb.AddAlarm(alarmDto);
                             OnAlarmRaised(alarmDto.Id);
                         }

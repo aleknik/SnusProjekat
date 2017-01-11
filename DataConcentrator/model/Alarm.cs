@@ -5,7 +5,11 @@ using System.Text;
 
 namespace DataConcentrator
 {
-    public enum ActivationType { Re = 0, Fe }
+    public enum ActivationType
+    {
+        Re = 0,
+        Fe
+    }
 
     public class Alarm
     {

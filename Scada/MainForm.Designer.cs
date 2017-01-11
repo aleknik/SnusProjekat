@@ -50,7 +50,7 @@
             // 
             this.buttonAddTAg.Location = new System.Drawing.Point(12, 12);
             this.buttonAddTAg.Name = "buttonAddTAg";
-            this.buttonAddTAg.Size = new System.Drawing.Size(114, 50);
+            this.buttonAddTAg.Size = new System.Drawing.Size(100, 50);
             this.buttonAddTAg.TabIndex = 1;
             this.buttonAddTAg.Text = "Add tag";
             this.buttonAddTAg.UseVisualStyleBackColor = true;
@@ -87,7 +87,7 @@
             // valueColumn
             // 
             this.valueColumn.Text = "Value";
-            this.valueColumn.Width = 87;
+            this.valueColumn.Width = 144;
             // 
             // columnHeader1
             // 
@@ -97,7 +97,7 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Scan time";
-            this.columnHeader2.Width = 127;
+            this.columnHeader2.Width = 101;
             // 
             // columnHeader3
             // 
@@ -113,7 +113,7 @@
             // 
             this.buttonRemoveTag.Location = new System.Drawing.Point(650, 12);
             this.buttonRemoveTag.Name = "buttonRemoveTag";
-            this.buttonRemoveTag.Size = new System.Drawing.Size(99, 50);
+            this.buttonRemoveTag.Size = new System.Drawing.Size(100, 50);
             this.buttonRemoveTag.TabIndex = 5;
             this.buttonRemoveTag.Text = "Remove tag";
             this.buttonRemoveTag.UseVisualStyleBackColor = true;

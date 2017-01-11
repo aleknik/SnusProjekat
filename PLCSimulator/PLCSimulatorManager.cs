@@ -99,11 +99,9 @@ namespace PLCSimulator
                 {
                     addressValues["ADDR001"] = 100*Math.Sin((double) DateTime.Now.Second/60*Math.PI); //SINE
                     addressValues["ADDR002"] = 100*DateTime.Now.Second/60; //RAMP
-                    addressValues["ADDR003"] = 100*Math.Sin((double) DateTime.Now.Second/60*Math.PI); //SINE
-                    addressValues["ADDR004"] = 100*DateTime.Now.Second/60; //RAMP
+                    addressValues["ADDR003"] = 100*Math.Cos((double) DateTime.Now.Second/60*Math.PI); //COSINE
+                    addressValues["ADDR004"] = 100 - 100*DateTime.Now.Second/60; //RAMP
                 }
-
-                //... 
             }
         }
 
@@ -124,8 +122,6 @@ namespace PLCSimulator
                         addressValues["ADDR009"] = 0;
                     }
                 }
-
-                //... 
             }
         }
 

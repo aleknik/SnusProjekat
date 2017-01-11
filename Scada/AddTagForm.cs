@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using DataConcentrator;
@@ -39,6 +37,7 @@ namespace Scada
             InitAnalogInputAddresses(comboBoxAiAddress);
             InitDigitalInputAddresses(comboBoxDiAddress);
             InitAnalogOutputAddresses(comboBoxAoAddress);
+            InitDigitalOutputAddresses(comboBoxDoAddress);
         }
 
 
@@ -72,25 +71,22 @@ namespace Scada
 
 
             panelTagCreate.Show();
-            panelAnalogInput.Hide();
-            panelDigitalInput.Hide();
-            panelAnalogOutput.Hide();
             switch ((string) comboBoxType.SelectedItem)
             {
                 case "Analog input":
-                    panelAnalogInput.Show();
+                    panelAnalogInput.BringToFront();
                     activePanel = panelAnalogInput;
                     break;
                 case "Digital input":
-                    panelDigitalInput.Show();
+                    panelDigitalInput.BringToFront();
                     activePanel = panelDigitalInput;
                     break;
                 case "Analog output":
-                    panelAnalogOutput.Show();
+                    panelAnalogOutput.BringToFront();
                     activePanel = panelAnalogOutput;
                     break;
                 case "Digital output":
-                    panelDigitalOutput.Show();
+                    panelDigitalOutput.BringToFront();
                     activePanel = panelDigitalOutput;
                     break;
             }
@@ -194,6 +190,7 @@ namespace Scada
             bool ok = true;
             if (!Utils.IsTextBoxNumber(textBoxAoInitVal))
             {
+                errorProvider1.SetError(textBoxAoInitVal, "Field must be an number");
                 ok = false;
             }
             if (Utils.IsEmpty(textBoxAoID, errorProvider1))
@@ -244,6 +241,7 @@ namespace Scada
             bool ok = true;
             if (!Utils.IsTextBoxNumber(textBoxDoInitVal))
             {
+                errorProvider1.SetError(textBoxDoInitVal, "Field must be an number");
                 ok = false;
             }
             if (Utils.IsEmpty(textBoxDoID, errorProvider1))
