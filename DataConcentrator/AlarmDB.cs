@@ -12,8 +12,10 @@ namespace DataConcentrator
 
         public AlarmDB()
         {
-            connString =
-                "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\alepH\\Desktop\\Projekat P2\\Projekat\\DataConcentrator\\AlarmDatabase.mdf\";Integrated Security = True";
+            //connString =
+            //    "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\alepH\\Desktop\\Projekat P2\\Projekat\\DataConcentrator\\AlarmDatabase.mdf\";Integrated Security = True";
+            connString = 
+                "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\dev\\Projekat P2\\Projekat P2\\Projekat\\DataConcentrator\\AlarmDatabase.mdf\";Integrated Security=True";
         }
 
         public void AddAlarm(AlarmDto alarmDto)
